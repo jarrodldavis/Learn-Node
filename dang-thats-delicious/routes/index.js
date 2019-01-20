@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
   // res.json(jarrod);
   // res.json(req.query);
   jarrod.dog = req.query.dog
+  jarrod.title = 'I love food'
   res.render('hello', jarrod);
 });
 
