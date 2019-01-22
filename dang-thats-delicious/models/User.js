@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
+const { promisify } = require('util');
+
 const md5 = require('md5');
 const validator = require('validator');
 const errorHandler = require('mongoose-mongodb-errors');
@@ -25,5 +27,7 @@ const userSchema = new Schema({
 
 userSchema.plugin(passport, { usernameField: 'email' });
 userSchema.plugin(errorHandler);
+
+userSchema.statics.register = promisify(userSchema.statics.register);
 
 module.exports = mongoose.model('User', userSchema);
