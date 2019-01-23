@@ -22,7 +22,9 @@ const userSchema = new Schema({
     type: String,
     required: 'Please provide a name',
     trim: true
-  }
+  },
+  resetPasswordToken: String,
+  resetPasswordExpires: Date
 });
 
 userSchema.virtual('gravatar').get(function() {
@@ -33,5 +35,6 @@ userSchema.plugin(passport, { usernameField: 'email' });
 userSchema.plugin(errorHandler);
 
 userSchema.statics.register = promisify(userSchema.statics.register);
+userSchema.methods.setPassword = promisify(userSchema.methods.setPassword);
 
 module.exports = mongoose.model('User', userSchema);
