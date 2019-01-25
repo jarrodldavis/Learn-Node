@@ -4,6 +4,7 @@ const router = express.Router();
 const { catchErrors } = require('../handlers/errorHandlers');
 const storeController = require('../controllers/storeController');
 const userController = require('../controllers/userController');
+const reviewController = require('../controllers/reviewController');
 const authController = require('../controllers/authController');
 
 // Do work here
@@ -51,6 +52,8 @@ router.post('/account/reset/:token',
 router.get('/map', storeController.mapPage);
 
 router.get('/hearts', authController.isLoggedIn, catchErrors(storeController.getHearts));
+
+router.post('/reviews/:id', authController.isLoggedIn, catchErrors(reviewController.addReview));
 
 router.get('/api/search', catchErrors(storeController.searchStores));
 router.get('/api/stores/near', catchErrors(storeController.mapStores));
