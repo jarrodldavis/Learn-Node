@@ -141,7 +141,7 @@ exports.heartStore = async (req, res) => {
   res.json(user);
 }
 
-exports.getHeartedStores = async (req, res) => {
+exports.getHearts = async (req, res) => {
   const stores = await Store.find({ _id: { $in: req.user.hearts }});
-  res.render('hearts', { title: 'Hearts', stores });
+  res.render('stores', { title: 'Hearted Stores', stores });
 }
