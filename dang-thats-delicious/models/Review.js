@@ -25,6 +25,14 @@ const reviewSchema = new mongoose.Schema({
     min: 1,
     max: 5
   }
-})
+});
+
+function autopopulate(next) {
+  this.populate('author');
+  next();
+}
+
+reviewSchema.pre('find', autopopulate);
+reviewSchema.pre('findOne', autopopulate);
 
 module.exports = mongoose.model('Review', reviewSchema);
