@@ -906,9 +906,10 @@ label {
 
 .heart__button {
   background: none;
-  border: 0;
   outline: 0;
   position: relative; }
+  .heart__button[type=submit] {
+    border: 0; }
   .heart__button:after {
     content: '\2665\FE0F';
     font-size: 20px;

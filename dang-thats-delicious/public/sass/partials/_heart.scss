@@ -1,7 +1,9 @@
 .heart {
   &__button {
     background: none;
-    border: 0;
+    &[type=submit] {
+      border: 0;
+    }
     outline: 0;
     position: relative;
     &:after {

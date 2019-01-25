@@ -43,7 +43,8 @@ function loadPlaces(map, lat = 43.2, lng = -79.8) {
 
          map.setCenter(bounds.getCenter());
          map.fitBounds(bounds);
-       });
+       })
+       .catch(error => console.error(error));
 }
 
 function makeMap(mapDiv) {
