@@ -701,7 +701,7 @@ label {
 
 .table {
   width: 100%; }
-  .table td {
+  .table td, .table th {
     padding: 5px; }
   .table tr:nth-child(even) {
     background: white; }
